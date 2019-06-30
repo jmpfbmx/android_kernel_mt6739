@@ -1,0 +1,53 @@
+
+
+bat_gm30: bat_gm30{
+	compatible = "mediatek,bat_gm30";
+	DIFFERENCE_FULLOCV_ITH = <(150)>;	/*	Charging termination current.*/
+	SHUTDOWN_1_TIME = <(60)>;	/*	If ui_soc shows 1% more than X minites, system will shutdown.*/
+	KEEP_100_PERCENT = <(3)>;	/*	The ui_soc will keep 100% until SOC drop X percents after unplugged.*/
+	R_FG_VALUE = <(10)>;	/*	R_sense resistance.*/
+	EMBEDDED_SEL = <(1)>;	/*	Configures whether using embedded battery or not. modified by hailong.chen for task 6619595 0>>>1 on 2018/07/18*/
+	PMIC_SHUTDOWN_CURRENT = <(20)>;	/*	System shutdown current.*/
+	FG_METER_RESISTANCE = <(200)>;	/*	The resistance of PCB*/
+	CAR_TUNE_VALUE = <(104)>;	/*	Tune value for current measurement.*/ //modified by shiqiang.chen.hz for defect 5847964, modified tune_value of gauge.
+	TEMPERATURE_T0 = <(50)>;	/*	Battery temperature T0*/
+	TEMPERATURE_T1 = <(25)>;	/*	Battery temperature T1*/
+	TEMPERATURE_T2 = <(0)>;		/*	Battery temperature T2 modified by hailong.chen for XR5598906 modify 10 >>>> 0 on 2017/11/24*/
+	TEMPERATURE_T3 = <(-10)>;	/*	Battery temperature T3 modified by hailong.chen for XR5598906 modify 0 >>>> -10 on 2017/11/24*/
+//Begin modified by shiqiang.chen.hz 20180207, modified Pseudo 100% percentage for display uisoc100%.
+	g_FG_PSEUDO100_T0 = <(100)>;	/*	Pseudo 100% percentage at T0.*/
+	g_FG_PSEUDO100_T1 = <(100)>;	/*	Pseudo 100% percentage at T1.*/
+	g_FG_PSEUDO100_T2 = <(100)>;	/*	Pseudo 100% percentage at T2.*/
+	g_FG_PSEUDO100_T3 = <(100)>;	/*	Pseudo 100% percentage at T3.*/
+//End modified by shiqiang.chen.hz 20180207, modified Pseudo 100% percentage for display uisoc100%.
+
+/*Begin added by rongxiao.deng for defect 5824028 on 2018/01/05*/
+	g_FG_PSEUDO1_T0 = <(2)>;	/*	Pseudo 1% percentage at T0.*/
+	g_FG_PSEUDO1_T1 = <(2)>;	/*	Pseudo 1% percentage at T1.*/
+	g_FG_PSEUDO1_T2 = <(2)>;	/*	Pseudo 1% percentage at T2.*/
+	g_FG_PSEUDO1_T3 = <(2)>;	/*	Pseudo 1% percentage at T3.*/
+/*End added by rongxiao.deng for defect 5824028 on 2018/01/05*/
+
+	Q_MAX_SYS_VOLTAGE_BAT0 = <(3400)>;	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT1 = <(3400)>;	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT2 = <(3400)>;	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT3 = <(3400)>;	/*	System shut down voltage.*/
+#if (CONFIG_MTK_ADDITIONAL_BATTERY_TABLE == 1)
+#include "mt6739_battery_table_ext.dtsi"
+#else
+
+//Begin modified by shiqiang.chen.hz for FR5597245 on 20171130, add u5_plus battery_prop and BYD battery ZCV
+#if 0
+/*Begin modified by hailong.chen for XR5598906 modify include *.dtsi on 2017/11/24*/
+//#include "mt6739_battery_table.dtsi"
+#include "A3A_battery_byd.dtsi"
+#include "A3A_battery_veken.dtsi"
+/*End modified by hailong.chen for XR5598906 modify include *.dtsi on 2017/11/24*/
+#endif
+
+#include "u5a_plus_battery_table_byd.dtsi"
+#include "u5a_plus_battery_table_veken.dtsi"	//added weike battery parameter by shiqiang.chen.hz
+//End modified by shiqiang.chen.hz for FR5597245 on 20171130, add u5_plus battery_prop and BYD battery ZCV
+
+#endif
+};

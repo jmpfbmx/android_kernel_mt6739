@@ -1,0 +1,108 @@
+#
+# Touchscreen driver configuration
+#
+menuconfig INPUT_TOUCHSCREEN
+	bool "Touchscreens"
+	help
+	  Say Y here, and a list of supported touchscreens will be displayed.
+	  This option doesn't affect the kernel.
+
+	  If unsure, say Y.
+
+if INPUT_TOUCHSCREEN
+
+config TOUCHSCREEN_MTK
+	bool "MediaTek Touch Panel Driver"
+	help
+	  Say Y here if you have MediaTek touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+config TOUCHSCREEN_PHYSICAL_ROTATION_WITH_LCM
+	bool "MediaTek Touch Panel Rotation With LCM"
+	default y
+	help
+	  Say N here if touch panel is not physical rotated as LCM does.
+	  Physically rotated means that this driver will map
+	  the reported coordination to diagonal position.
+
+	  If unsure, say Y.
+
+config TOUCHSCREEN_MTK_GT1151
+	bool "GT1151 for Mediatek package"
+	default n
+	help
+	  Say Y here if you have GT1151 touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/GT1151/Kconfig"
+
+# Modified by longfang.liu.hz for add new CTP driver 2017.10.23 begin
+config TOUCHSCREEN_MTK_A3A_FT8613
+	bool "ft8613 for Mediatek package"
+	default n
+	help
+	  Say Y here if you have ft8613 touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+source "drivers/input/touchscreen/mediatek/a3a_ft8613/Kconfig"
+
+config TOUCHSCREEN_MTK_A3A_TD4310
+	bool "td4310 for Mediatek package"
+	default n
+	help
+	  Say Y here if you have td4310 touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/a3a_td4310/Kconfig"
+# Modified by longfang.liu.hz for add new CTP driver 2017.10.23 end
+config TOUCHSCREEN_MTK_GT911
+	bool "GT911 for Mediatek package"
+	help
+	  Say Y here if you have GT911 touch panel.
+
+	  If unsure, say N.
+
+source "drivers/input/touchscreen/mediatek/GT911/Kconfig"
+
+config TOUCHSCREEN_FT5X26
+	bool "FT5X26 for Mediatek package"
+	default n
+	help
+	  Say Y here if you have FT5X26 touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/FT5X26/Kconfig"
+
+config TOUCHSCREEN_MTK_GSLX680
+	bool "gslX680 for Mediatek package"
+	help
+	  Say Y here if you have gslX680 touch panel.
+
+	  If unsure, say N.
+
+#Begin added by yang.liu.hz for FR5597245 on 20171115,add CTP drivers.
+source "drivers/input/touchscreen/mediatek/u5aplus_msg22xx/Kconfig"
+#End added by yang.liu.hz for FR5597245 on 20171115,add CTP drivers.
+#*** add for focaltech touch panel driver, 2017.12.06 , zlh ***
+source "drivers/input/touchscreen/mediatek/focaltech_touch/Kconfig"
+#**************************************************************
+endif

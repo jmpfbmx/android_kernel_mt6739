@@ -1,0 +1,14 @@
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.txt.
+#
+mainmenu "Linux/$ARCH $KERNELVERSION Kernel Configuration"
+
+config SRCARCH
+	string
+	option env="SRCARCH"
+
+source "arch/$SRCARCH/Kconfig"
+# Begin add smart log by yinghe for XR5424644 on 2017-11-14
+source "kernel/printk/Kconfig"
+# End add smart log by yinghe for XR5424644 on 2017-11-14

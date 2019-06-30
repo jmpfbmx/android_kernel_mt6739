@@ -1,0 +1,13 @@
+
+/dts-v1/;
+#include "mt6592.dtsi"
+
+/ {
+	model = "mt6592 evb";
+	compatible = "mediatek,mt6592-evb", "mediatek,mt6592";
+
+	memory {
+		reg = <0x80000000 0x40000000>;
+	};
+};
+

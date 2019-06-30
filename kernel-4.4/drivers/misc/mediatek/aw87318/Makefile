@@ -1,0 +1,1 @@
+obj-$(CONFIG_AW87318_AUDIO_PA) := aw87318.o

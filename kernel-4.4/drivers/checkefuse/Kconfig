@@ -1,0 +1,5 @@
+config CHECKEFUSE  
+tristate "checkefuse status Driver"  
+default n  
+help  
+It is a Efuse status checke driver. 

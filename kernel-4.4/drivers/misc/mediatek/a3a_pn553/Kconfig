@@ -1,0 +1,6 @@
+config NFC_PN553
+	bool "NXP NFC driver"
+	default y
+	help
+	  Say Y here for supporting  NXP NFC PN547 PN548 PN553.
+

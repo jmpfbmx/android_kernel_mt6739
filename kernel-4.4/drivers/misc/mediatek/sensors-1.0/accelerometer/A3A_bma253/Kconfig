@@ -1,0 +1,4 @@
+config MTK_A3A_BMA253_NEW
+	bool "MTK_A3A_BMA2XX_NEW for MediaTek package"
+	default n
+	

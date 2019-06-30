@@ -1,0 +1,16 @@
+
+#if defined CONFIG_MTK_PMIC_CHIP_MT6353
+
+extern const unsigned int *MT6353_PMIC_REG_gs_flightmode_suspend_mode;
+extern unsigned int MT6353_PMIC_REG_gs_flightmode_suspend_mode_len;
+extern const unsigned int *MT6353_PMIC_REG_gs_early_suspend_deep_idle_mode;
+extern unsigned int MT6353_PMIC_REG_gs_early_suspend_deep_idle_mode_len;
+
+#else
+
+extern const unsigned int *MT6351_PMIC_REG_gs_flightmode_suspend_mode;
+extern unsigned int MT6351_PMIC_REG_gs_flightmode_suspend_mode_len;
+extern const unsigned int *MT6351_PMIC_REG_gs_early_suspend_deep_idle_mode;
+extern unsigned int MT6351_PMIC_REG_gs_early_suspend_deep_idle_mode_len;
+
+#endif

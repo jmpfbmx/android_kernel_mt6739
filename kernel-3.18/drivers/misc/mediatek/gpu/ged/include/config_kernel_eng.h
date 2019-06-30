@@ -1,0 +1,2 @@
+
+#define GED_DEBUG

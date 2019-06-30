@@ -1,0 +1,79 @@
+
+#include <linux/types.h>
+
+#include <mtk_mcdi.h>
+#include <mtk_mcdi_state.h>
+
+enum {
+	MCDI_STATE_TABLE_SET_0      = 0,
+
+	NF_MCDI_STATE_TABLE_TYPE
+};
+
+static struct cpuidle_driver mt67xx_acao_mcdi_state[NF_MCDI_STATE_TABLE_TYPE] = {
+	[0] = {
+		.name             = "mt67xx_acao_mcdi_set_0",
+		.owner            = THIS_MODULE,
+		.states[0] = {
+			.enter              = NULL,
+			.exit_latency       = 1,
+			.target_residency   = 1,
+			.name               = "wfi",
+			.desc               = "wfi"
+		},
+		.states[1] = {
+			.enter              = NULL,
+			.exit_latency       = 300,
+			.target_residency   = 4500,
+			.name               = "cpu_off",
+			.desc               = "cpu_off",
+		},
+		.states[2] = {
+			.enter              = NULL,
+			.exit_latency       = 600,
+			.target_residency   = 4500,
+			.name               = "cluster_off",
+			.desc               = "cluster_off",
+		},
+		.states[3] = {
+			.enter              = NULL,
+			.exit_latency       = 1200,
+			.target_residency   = 5000,
+			.name               = "sodi",
+			.desc               = "sodi",
+		},
+		.states[4] = {
+			.enter              = NULL,
+			.exit_latency       = 1200,
+			.target_residency   = 5000,
+			.name               = "dpidle",
+			.desc               = "dpidle",
+		},
+		.states[5] = {
+			.enter              = NULL,
+			.exit_latency       = 5000,
+			.target_residency   = 10500,
+			.name               = "sodi3",
+			.desc               = "sodi3",
+		},
+		.state_count = 6,
+		.safe_state_index = 0,
+	},
+};
+
+static int mcdi_state_table_idx_map[NF_CPU] = {
+	MCDI_STATE_TABLE_SET_0,
+	MCDI_STATE_TABLE_SET_0,
+	MCDI_STATE_TABLE_SET_0,
+	MCDI_STATE_TABLE_SET_0,
+};
+
+struct cpuidle_driver *mcdi_state_tbl_get(int cpu)
+{
+	int tbl_idx = 0;
+
+	tbl_idx = (cpu >= 0 && cpu < NF_CPU) ? mcdi_state_table_idx_map[cpu] : 0;
+
+	return &mt67xx_acao_mcdi_state[tbl_idx];
+}
+

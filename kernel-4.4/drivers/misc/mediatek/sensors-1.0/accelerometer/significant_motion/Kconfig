@@ -1,0 +1,4 @@
+config MTK_SIGNIFICANT_SENSOR
+	bool "MTK_SIGNIFICANT_SENSOR for MediaTek package"
+	default n
+	

@@ -1,0 +1,7 @@
+config FC8180_DTV
+	tristate "fc8180 dtv driver code"
+	---help---
+	  fc8180 dtv driver code
+	  If you want to use fc8180 dtv driver,
+	  say Y or M here.
+	  If unsure, say N.

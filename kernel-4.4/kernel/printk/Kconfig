@@ -1,0 +1,14 @@
+# Begin add smart log by yinghe for XR5424644 on 2017-11-14
+config JRD_PRINTD
+	bool "JRD_PRINTD"
+	default n
+	---help---
+	  Select if you want to enable smart log.
+# End add smart log by yinghe for XR5424644 on 2017-11-14
+# Begin added by yinghe for XR5424657 on 2017/12/26
+config TCT_BIGLOG
+    bool "TCT_BIGLOG"
+    default n
+    ---help---
+      Select if you want to enable smart info.
+# End added by yinghe for XR5424657 on 2017/12/26

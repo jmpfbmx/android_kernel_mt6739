@@ -1,0 +1,5 @@
+#include $(srctree)/drivers/misc/mediatek/Makefile.custom
+
+obj-y += ov13855mipiraw_Sensor.o
+obj-y += ov13855_pdaf_cal.o
+obj-y += ov13855_otp_cal.o

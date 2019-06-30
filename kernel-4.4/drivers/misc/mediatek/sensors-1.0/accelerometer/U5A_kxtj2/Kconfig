@@ -1,0 +1,9 @@
+config MTK_U5A_KXTJ2
+	bool "KXTJ2 for MediaTek package"
+	default y
+config MTK_KXTJ2
+	bool "kxtj2 g-sensor for MediaTek package"
+        default n
+	help
+	  kxtj2 driver support some bosh g-sensor chip.
+	  now this driver is used for kxtj2.

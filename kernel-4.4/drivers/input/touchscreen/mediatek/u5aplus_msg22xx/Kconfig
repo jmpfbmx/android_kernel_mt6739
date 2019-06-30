@@ -1,0 +1,10 @@
+#
+# Touchscreen driver configuration
+#
+config TOUCHSCREEN_MTK_U5APLUS_MSG22XX
+    bool "MStar Ts for Mediatek"
+    depends on I2C
+    default n
+    help
+      Say Y here if you have Mstar touch panel.
+      If unsure, say N.

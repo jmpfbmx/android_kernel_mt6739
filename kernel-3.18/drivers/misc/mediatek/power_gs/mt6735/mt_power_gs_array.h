@@ -1,0 +1,3 @@
+
+extern const unsigned int *MT6328_PMIC_REG_gs_flightmode_suspend_mode;
+extern unsigned int MT6328_PMIC_REG_gs_flightmode_suspend_mode_len;
